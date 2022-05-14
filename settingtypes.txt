@@ -1,0 +1,9 @@
+
+# List of selected pole types for pole scaffolding
+#
+# * - all supported scaffoldings
+# scaffolding1,scaffolding2 - comma separated list of scaffolding keys
+# aviable scaffoldings:
+#   wood,bamboo,bamboo_wood,steel,stainless_steel
+pole_scaffolding_enabled_scaffoldings (List of scaffoldings) string *
+
