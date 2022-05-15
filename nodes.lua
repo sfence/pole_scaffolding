@@ -495,6 +495,16 @@ local junc_coll_box = {
   },
 }
 
+local function after_place_scaffolding(pos, placer, itemstack, pointed_thing)
+  local node = minetest.get_node(pos)
+  
+  local under = minetest.get_node(pointed_thing.under)
+  if minetest.get_item_group(under.name, "scaffolding")>0 and (under.param2~=node.param2) then
+    node.param2 = under.param2
+    minetest.swap_node(pos, node)
+  end
+end
+
 for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
   print(key..":"..dump(scaffolding))
   minetest.register_node("pole_scaffolding:"..key.."_base", {
@@ -507,7 +517,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_base_floor", {
@@ -520,7 +532,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_end", {
@@ -533,7 +547,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_end_floor", {
@@ -546,7 +562,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_ladder", {
@@ -560,7 +578,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype2 = "facedir",
       sunlight_propagates = true,
       climbable = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_ladder_floor", {
@@ -574,7 +594,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype2 = "facedir",
       sunlight_propagates = true,
       climbable = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_cross", {
@@ -587,7 +609,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_cross_floor", {
@@ -600,7 +624,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
 
   minetest.register_node("pole_scaffolding:"..key.."_curve", {
@@ -613,7 +639,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
   minetest.register_node("pole_scaffolding:"..key.."_junc", {
       description = scaffolding.desc.." "..S("Junc"),
@@ -625,7 +653,9 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
-      groups = {choppy = 1},
+      groups = {scaffolding = 1, dig_immediate = 2},
+      
+      after_place_node = after_place_scaffolding,
     })
   
   if not scaffolding.no_recipes then
