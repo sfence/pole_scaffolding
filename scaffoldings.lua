@@ -41,6 +41,12 @@ end
 if minetest.get_modpath("rope_bridges") then
   table.insert(connectors, "rope_bridges:rope_string")
 end
+if minetest.registered_items["farming:hemp_rope"] then
+  table.insert(connectors, "farming:hemp_rope")
+end
+if minetest.get_modpath("hades_extrafarming") then
+  table.insert(connectors, "hades_extrafarming:hemp_rope")
+end
 if (#connectors==0) then
   table.insert(connectors, "farming:string")
   table.insert(connectors, "hades_farming:string")
@@ -56,6 +62,32 @@ if minetest.get_modpath("default") then
       slab_tile = "default_wood.png",
       recipe_pole = "default:stick",
       recipe_slab = slab,
+      recipe_connectors = connectors,
+    })
+  if minetest.get_modpath("basic_materials") then
+    add_scaffolding("steel", {
+        desc = S("Steel Scaffolding"),
+        pole_item = "default:stick",
+        slab_item = "default:steelblock",
+        pole_tile = "pole_scaffolding_steel_edge.png",
+        slab_tile = "pole_scaffolding_steel_body.png",
+        steel_floor = true,
+        recipe_pole = "basic_materials:steel_bar",
+        recipe_slab = "stairs:slab_steelblock",
+        recipe_connectors = connectors,
+      })
+  end
+end
+if minetest.get_modpath("hades_core") and minetest.get_modpath("basic_materials") then
+  add_scaffolding("steel", {
+      desc = S("Steel Scaffolding"),
+      pole_item = "default:stick",
+      slab_item = "hades_core:steelblock",
+      pole_tile = "pole_scaffolding_steel_edge.png",
+      slab_tile = "pole_scaffolding_steel_body.png",
+      steel_floor = true,
+      recipe_pole = "basic_materials:steel_bar",
+      recipe_slab = "stairs:slab_steelblock",
       recipe_connectors = connectors,
     })
 end
@@ -87,5 +119,8 @@ if minetest.get_modpath("bamboo") or minetest.get_modpath("hades_bamboo") then
       recipe_slab = slab,
       recipe_connectors = connectors,
     })
+end
+
+if minetest.get_modpath("technic") then
 end
 

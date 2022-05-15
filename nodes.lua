@@ -521,22 +521,7 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       
       after_place_node = after_place_scaffolding,
     })
-
-  minetest.register_node("pole_scaffolding:"..key.."_base_floor", {
-      description = scaffolding.desc.." "..S("Base Floor"),
-      drawtype = "mesh",
-      mesh = "pole_scaffolding_base_floor.obj",
-      collision_box = base_floor_box,
-      selection_box = base_floor_box,
-      tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
-      paramtype = "light",
-      paramtype2 = "facedir",
-      sunlight_propagates = true,
-      groups = {scaffolding = 1, dig_immediate = 2},
-      
-      after_place_node = after_place_scaffolding,
-    })
-
+  
   minetest.register_node("pole_scaffolding:"..key.."_end", {
       description = scaffolding.desc.." "..S("End"),
       drawtype = "mesh",
@@ -544,21 +529,6 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       collision_box = end_coll_box,
       selection_box = end_box,
       tiles = {scaffolding.pole_tile},
-      paramtype = "light",
-      paramtype2 = "facedir",
-      sunlight_propagates = true,
-      groups = {scaffolding = 1, dig_immediate = 2},
-      
-      after_place_node = after_place_scaffolding,
-    })
-
-  minetest.register_node("pole_scaffolding:"..key.."_end_floor", {
-      description = scaffolding.desc.." "..S("End Floor"),
-      drawtype = "mesh",
-      mesh = "pole_scaffolding_end_floor.obj",
-      collision_box = end_floor_box,
-      selection_box = end_floor_box,
-      tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
@@ -583,22 +553,6 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       after_place_node = after_place_scaffolding,
     })
 
-  minetest.register_node("pole_scaffolding:"..key.."_ladder_floor", {
-      description = scaffolding.desc.." "..S("Ladder Floor"),
-      drawtype = "mesh",
-      mesh = "pole_scaffolding_ladder_floor.obj",
-      collision_box = ladder_floor_box,
-      selection_box = ladder_floor_box,
-      tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
-      paramtype = "light",
-      paramtype2 = "facedir",
-      sunlight_propagates = true,
-      climbable = true,
-      groups = {scaffolding = 1, dig_immediate = 2},
-      
-      after_place_node = after_place_scaffolding,
-    })
-
   minetest.register_node("pole_scaffolding:"..key.."_cross", {
       description = scaffolding.desc.." "..S("Cross"),
       drawtype = "mesh",
@@ -606,21 +560,6 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       collision_box = cross_box,
       selection_box = cross_box,
       tiles = {scaffolding.pole_tile},
-      paramtype = "light",
-      paramtype2 = "facedir",
-      sunlight_propagates = true,
-      groups = {scaffolding = 1, dig_immediate = 2},
-      
-      after_place_node = after_place_scaffolding,
-    })
-
-  minetest.register_node("pole_scaffolding:"..key.."_cross_floor", {
-      description = scaffolding.desc.." "..S("Cross Floor"),
-      drawtype = "mesh",
-      mesh = "pole_scaffolding_cross_floor.obj",
-      collision_box = cross_floor_box,
-      selection_box = cross_floor_box,
-      tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
       paramtype = "light",
       paramtype2 = "facedir",
       sunlight_propagates = true,
@@ -657,6 +596,130 @@ for key,scaffolding in pairs(pole_scaffolding.scaffoldings) do
       
       after_place_node = after_place_scaffolding,
     })
+  
+  if scaffolding.steel_floor then
+    minetest.register_node("pole_scaffolding:"..key.."_base_floor", {
+        description = scaffolding.desc.." "..S("Base Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_base_floor_steel.obj",
+        collision_box = base_floor_box,
+        selection_box = base_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile, scaffolding.pole_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+    
+    minetest.register_node("pole_scaffolding:"..key.."_end_floor", {
+        description = scaffolding.desc.." "..S("End Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_end_floor_steel.obj",
+        collision_box = end_floor_box,
+        selection_box = end_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile, scaffolding.pole_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+
+    minetest.register_node("pole_scaffolding:"..key.."_ladder_floor", {
+        description = scaffolding.desc.." "..S("Ladder Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_ladder_floor_steel.obj",
+        collision_box = ladder_floor_box,
+        selection_box = ladder_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile, scaffolding.slab_tile, scaffolding.pole_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        climbable = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+
+    minetest.register_node("pole_scaffolding:"..key.."_cross_floor", {
+        description = scaffolding.desc.." "..S("Cross Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_cross_floor_steel.obj",
+        collision_box = cross_floor_box,
+        selection_box = cross_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile, scaffolding.pole_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+  else
+    minetest.register_node("pole_scaffolding:"..key.."_base_floor", {
+        description = scaffolding.desc.." "..S("Base Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_base_floor.obj",
+        collision_box = base_floor_box,
+        selection_box = base_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+    
+    minetest.register_node("pole_scaffolding:"..key.."_end_floor", {
+        description = scaffolding.desc.." "..S("End Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_end_floor.obj",
+        collision_box = end_floor_box,
+        selection_box = end_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+
+    minetest.register_node("pole_scaffolding:"..key.."_ladder_floor", {
+        description = scaffolding.desc.." "..S("Ladder Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_ladder_floor.obj",
+        collision_box = ladder_floor_box,
+        selection_box = ladder_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        climbable = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+
+    minetest.register_node("pole_scaffolding:"..key.."_cross_floor", {
+        description = scaffolding.desc.." "..S("Cross Floor"),
+        drawtype = "mesh",
+        mesh = "pole_scaffolding_cross_floor.obj",
+        collision_box = cross_floor_box,
+        selection_box = cross_floor_box,
+        tiles = {scaffolding.pole_tile, scaffolding.pole_tile, scaffolding.slab_tile},
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {scaffolding = 1, dig_immediate = 2},
+        
+        after_place_node = after_place_scaffolding,
+      })
+  end
   
   if not scaffolding.no_recipes then
     for _,connector in pairs(scaffolding.recipe_connectors) do
