@@ -47,8 +47,30 @@ if (#connectors==0) then
 end
 
 if minetest.get_modpath("default") then
+  local slab = "stairs:slab_wood"
+  add_scaffolding("wood", {
+      desc = S("Wood Scaffolding"),
+      pole_item = "default:stick",
+      slab_item = "bamboo:panel_wood",
+      pole_tile = "default_tree.png^[transformR90",
+      slab_tile = "default_wood.png",
+      recipe_pole = "default:stick",
+      recipe_slab = slab,
+      recipe_connectors = connectors,
+    })
 end
 if minetest.get_modpath("hades_trees") then
+  local slab = "stairs:slab_wood"
+  add_scaffolding("wood", {
+      desc = S("Wood Scaffolding"),
+      pole_item = "hades_core:stick",
+      slab_item = "bamboo:panel_wood",
+      pole_tile = "default_tree.png^[transformR90",
+      slab_tile = "default_wood.png",
+      recipe_pole = "hades_core:stick",
+      recipe_slab = slab,
+      recipe_connectors = connectors,
+    })
 end
 if minetest.get_modpath("bamboo") or minetest.get_modpath("hades_bamboo") then
   local slab = "stairs:slab_bamboo_trunk"
