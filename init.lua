@@ -13,7 +13,10 @@ pole_scaffolding.enabled_scaffoldings = minetest.settings:get("pole_scaffolding_
 
 dofile(modpath.."/scaffoldings.lua")
 
+dofile(modpath.."/craftitems.lua")
 dofile(modpath.."/nodes.lua")
+
+dofile(modpath.."/crafting.lua")
 
 minetest.log("action", "Loaded pole_scaffolding.")
 

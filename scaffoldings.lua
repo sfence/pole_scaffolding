@@ -74,7 +74,7 @@ if minetest.get_modpath("default") then
         steel_floor = true,
         recipe_pole = "basic_materials:steel_bar",
         recipe_slab = "stairs:slab_steelblock",
-        recipe_connectors = connectors,
+        recipe_connectors = {"pole_scaffolding:coupling_steel"},
       })
   end
 end
@@ -88,7 +88,7 @@ if minetest.get_modpath("hades_core") and minetest.get_modpath("basic_materials"
       steel_floor = true,
       recipe_pole = "basic_materials:steel_bar",
       recipe_slab = "stairs:slab_steelblock",
-      recipe_connectors = connectors,
+      recipe_connectors = {"pole_scaffolding:coupling_steel"},
     })
 end
 if minetest.get_modpath("hades_trees") then
